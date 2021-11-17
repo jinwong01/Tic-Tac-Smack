@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Tic Tac Smack</string>
+    <string name="top_left">Top Left</string>
+    <string name="top_middle">Top Middle</string>
+    <string name="top_right">Top Right</string>
+    <string name="middle_left">Middle Left</string>
+    <string name="middle_middle">Middle Middle</string>
+    <string name="middle_right">Middle Right</string>
+    <string name="bottom_left">Bottom Left</string>
+    <string name="bottom_middle">Bottom Middle</string>
+    <string name="bottom_right">Bottom Right</string>
+    <string name="new_game">New Game</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="vs">VS</string>
+    <string name="_1_player">1 Player</string>
+    <string name="_2_players">2 Players</string>
+    <string name="start">Start</string>
+    <string name="select_team">Select Team</string>
+    <string name="musk_0">Musk: 0</string>
+    <string name="bezos_0">Bezos: 0</string>
+</resources>
