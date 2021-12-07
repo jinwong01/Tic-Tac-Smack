@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ public class GameActivity extends AppCompatActivity {
     Random rNumber = new Random();
     int muskWins = 0;
     int bezosWins = 0;
+
     boolean twoPlayers;
     String teamChoice;
     boolean elonTurn = true;
@@ -141,6 +143,14 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        Button newGameButton = findViewById(R.id.button_newGame);
+        newGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetBoard();
+            }
+        });
+
     } //end on create
 
     public void buttonClicked(int row, int column) {
@@ -162,6 +172,7 @@ public class GameActivity extends AppCompatActivity {
             bezosColumnsContainer[column] += 1;
             if (row == column) {
                 bezosDiagonalContainer[row] += 1;
+
             }
             if ((row + column + 1) == 3) {
                 bezosOppositeDiangonalContainer[row] += 1;
@@ -195,9 +206,64 @@ public class GameActivity extends AppCompatActivity {
         if(bezosRowsContainer[row] == 3) {
             messageTextView.setText("Team Bezos wins");
         }
+
         if(bezosColumnsContainer[column] == 3) {
             messageTextView.setText("Team Bezos wins");
         }
+
+        if(bezosDiagonalContainer[row] == 3) {
+            messageTextView.setText("Team Bezos wins");//doesnt work need to add the numbers together
+        }
+
+        int sum = 0;
+
+        for(int i=0; i<bezosDiagonalContainer.length; i++){
+            sum = sum + bezosDiagonalContainer[i];
+            if (sum == 3) {
+                messageTextView.setText("Team Bezos wins");
+            }
+
+        }
+
+        int sum2 = 0;
+        for(int i=0; i<bezosOppositeDiangonalContainer.length; i++){
+            sum2 = sum2 + bezosOppositeDiangonalContainer[i];
+            if (sum2 == 3) {
+                messageTextView.setText("Team Bezos wins");
+            }
+
+        }
+
+
+
+    }
+
+    public void resetArrays(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = 0;
+        }
+    }
+
+    public void resetBoard() {
+        imageButtons[0][0].setImageDrawable(getResources().getDrawable(R.drawable.blank));
+        imageButtons[0][1].setImageDrawable(getResources().getDrawable(R.drawable.blank));
+        imageButtons[0][2].setImageDrawable(getResources().getDrawable(R.drawable.blank));
+        imageButtons[1][0].setImageDrawable(getResources().getDrawable(R.drawable.blank));
+        imageButtons[1][1].setImageDrawable(getResources().getDrawable(R.drawable.blank));
+        imageButtons[1][2].setImageDrawable(getResources().getDrawable(R.drawable.blank));
+        imageButtons[2][0].setImageDrawable(getResources().getDrawable(R.drawable.blank));
+        imageButtons[2][1].setImageDrawable(getResources().getDrawable(R.drawable.blank));
+        imageButtons[2][2].setImageDrawable(getResources().getDrawable(R.drawable.blank));
+
+        resetArrays(muskRowsContainer);
+        resetArrays(muskColumnsContainer);
+        resetArrays(muskDiagonalContainer);
+        resetArrays(muskOppositeDiangonalContainer);
+        resetArrays(bezosColumnsContainer);
+        resetArrays(bezosRowsContainer);
+        resetArrays(bezosDiagonalContainer);
+        resetArrays(bezosOppositeDiangonalContainer);
+
 
     }
 
